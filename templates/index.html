@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HypnoLife - Thérapie et Hypnose</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="landing-page">
+        <div class="container">
+            <h1 class="landing-title fade-in">Bienvenue chez HypnoLife</h1>
+            <p class="landing-subtitle fade-in">Découvrez comment l'hypnothérapie peut transformer votre vie en accédant
+                aux ressources profondes de votre inconscient. Notre approche personnalisée vous aide à surmonter les
+                défis et à atteindre vos objectifs de bien-être.</p>
+            <a href="{{ url_for('personal_info') }}" class="btn btn-primary fade-in">Commencer mon diagnostic</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

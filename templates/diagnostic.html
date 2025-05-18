@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HypnoLife - Diagnostic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="diagnostic-page">
+        <div class="container">
+            <div class="diagnostic-header fade-in">
+                <h1 class="diagnostic-title">Diagnostic Hypnothérapeutique</h1>
+                <p class="diagnostic-subtitle">Choisissez une catégorie pour commencer votre questionnaire personnalisé
+                </p>
+            </div>
+
+            <div class="categories-container fade-in">
+                <h2 class="categories-title">Choisissez une catégorie</h2>
+                <div class="categories-grid">
+                    <div class="category-card fade-in" data-category="gestion-du-poids">
+                        <i class="fas fa-weight category-icon"></i>
+                        <h3 class="category-title">Gestion du Poids</h3>
+                        <p>Identifier & ancrer une relation saine avec l'alimentation</p>
+                    </div>
+                    <div class="category-card fade-in" data-category="gestion-du-stress">
+                        <i class="fas fa-brain category-icon"></i>
+                        <h3 class="category-title">Gestion du Stress</h3>
+                        <p>Repérer les déclencheurs et transformer les réponses automatiques</p>
+                    </div>
+                    <div class="category-card fade-in" data-category="tabac-et-addictions">
+                        <i class="fas fa-smoking-ban category-icon"></i>
+                        <h3 class="category-title">Tabac & Addictions</h3>
+                        <p>Découvrir les racines du besoin et installer de nouveaux automatismes</p>
+                    </div>
+                    <div class="category-card fade-in" data-category="sommeil">
+                        <i class="fas fa-moon category-icon"></i>
+                        <h3 class="category-title">Sommeil</h3>
+                        <p>Reprendre le contrôle sur les cycles de repos</p>
+                    </div>
+                    <div class="category-card fade-in" data-category="renforcement-de-la-confiance">
+                        <i class="fas fa-shield-alt category-icon"></i>
+                        <h3 class="category-title">Renforcement de la Confiance</h3>
+                        <p>Révéler et amplifier vos ressources intérieures</p>
+                    </div>
+                    <div class="category-card fade-in" data-category="projet-personnel">
+                        <i class="fas fa-rocket category-icon"></i>
+                        <h3 class="category-title">Réussir Un projet</h3>
+                        <p>Projet personnel ou Promotion professionnelle</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link fade-in" style="text-align: center; margin-top: 3rem;">
+                <a href="{{ url_for('personal_info') }}" class="btn">Modifier mes informations</a>
+                <a href="{{ url_for('index') }}" class="btn">Retour à l'accueil</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

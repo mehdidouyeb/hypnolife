@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HypnoLife - Questionnaire {{ category }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="questionnaire-page">
+        <div class="container">
+            <div class="questionnaire-header fade-in">
+                <h1 class="questionnaire-title">Questionnaire: <span class="category-name">{{ category }}</span></h1>
+                <p class="questionnaire-subtitle">Répondez aux questions suivantes pour obtenir un diagnostic
+                    personnalisé</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="questionnaire-content">
+                <div class="questionnaire-layout">
+                    <div class="avatar-container fade-in">
+                        <div class="avatar">
+                            <div class="avatar-image">
+                                <img src="/static/images/hypno.png" alt="Dr Ghizleine">
+                            </div>
+                        </div>
+                        <div class="avatar-message">
+                            <p id="avatar-text">Bienvenue dans votre voyage vers l'inconscient. Je vais vous guider à
+                                travers ce questionnaire et vous expliquer le lien entre vos réponses et le travail
+                                hypnothérapeutique.</p>
+                        </div>
+                    </div>
+
+                    <form id="questionnaire-form" data-category="{{ category }}">
+                        <div class="question-container" data-question-id="1" style="display: none;">
+                            <h3 class="question-title">Quand vous pensez à votre objectif de poids, quelle image se
+                                forme
+                                spontanément ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q1-a" name="q1" value="libre">
+                                    <label for="q1-a">Je me vois plus libre et légère, en train de bouger
+                                        facilement.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q1-b" name="q1" value="compliments">
+                                    <label for="q1-b">Je me vois recevant des compliments des autres.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q1-c" name="q1" value="chiffre">
+                                    <label for="q1-c">Je vois un chiffre précis sur la balance ou mes vêtements
+                                        préférés.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q1-d" name="q1" value="diffuse">
+                                    <label for="q1-d">Aucune image claire n'apparaît, c'est plutôt une sensation
+                                        diffuse.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="2" style="display: none;">
+                            <h3 class="question-title">Dans quelle mesure sentez-vous que votre corps "sait" déjà
+                                comment
+                                atteindre ce poids ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q2-a" name="q2" value="fortement">
+                                    <label for="q2-a">Très fortement, il suffit de l'écouter et avoir cette
+                                        connexion.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q2-b" name="q2" value="moyennement">
+                                    <label for="q2-b">Moyennement : j'ai besoin d'un guidage extérieur.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q2-c" name="q2" value="faiblement">
+                                    <label for="q2-c">Faiblement : je doute que mon corps puisse le faire seul.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q2-d" name="q2" value="pastout">
+                                    <label for="q2-d">Pas du tout : je me sens inapte et coupé(e) de ces
+                                        signaux.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="3" style="display: none;">
+                            <h3 class="question-title">Quelle émotion surgit dès que vous pensez à changer votre
+                                alimentation ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q3-a" name="q3" value="enthousiasme">
+                                    <label for="q3-a">Un élan d'enthousiasme et de curiosité</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q3-b" name="q3" value="crainte">
+                                    <label for="q3-b">Une crainte de la privation</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q3-c" name="q3" value="devoir">
+                                    <label for="q3-c">Un sentiment de devoir résigné : « Je dois le faire »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q3-d" name="q3" value="colere">
+                                    <label for="q3-d">Une colère intérieure : « Pourquoi moi ? »</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="4" style="display: none;">
+                            <h3 class="question-title">Votre critique interne dit le plus souvent :</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q4-a" name="q4" value="encouragement">
+                                    <label for="q4-a">« Tu vas y arriver, continue ! »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q4-b" name="q4" value="jugement">
+                                    <label for="q4-b">« Tu n'es jamais assez discipliné(e). »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q4-c" name="q4" value="comparaison">
+                                    <label for="q4-c">« Les autres y arrivent, pourquoi pas toi ? »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q4-d" name="q4" value="protection">
+                                    <label for="q4-d">« Manger t'aide à tenir le coup, ne change rien. »</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="5" style="display: none;">
+                            <h3 class="question-title">Dans quelles situations vous surprenez-vous à grignoter sans
+                                véritable faim ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q5-a" name="q5" value="recompense">
+                                    <label for="q5-a">Pour me récompenser après un succès ou une journée
+                                        éprouvante</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q5-b" name="q5" value="social">
+                                    <label for="q5-b">Au cœur des réunions familiales ou des sorties entre amis</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q5-c" name="q5" value="ecrans">
+                                    <label for="q5-c">Installé·e devant un écran en soirée</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q5-d" name="q5" value="rarement">
+                                    <label for="q5-d">Rarement : je mange seulement quand la faim se manifeste</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q5-e" name="q5" value="emotions">
+                                    <label for="q5-e">Quand la tristesse, l'ennui ou un coup de blues se font
+                                        sentir</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="6" style="display: none;">
+                            <h3 class="question-title">Comment qualifiez-vous votre relation inconsciente à la
+                                nourriture ?
+                            </h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q6-a" name="q6" value="refuge">
+                                    <label for="q6-a">Un refuge affectif : j'apaise mes émotions en mangeant</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q6-b" name="q6" value="social">
+                                    <label for="q6-b">Un ciment social : je partage, je célèbre, je crée du lien</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q6-c" name="q6" value="carburant">
+                                    <label for="q6-c">Un simple carburant : je nourris le corps sans y penser</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q6-d" name="q6" value="automatique">
+                                    <label for="q6-d">Un pilote automatique : je n'ai jamais vraiment questionné ce
+                                        rapport</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q6-e" name="q6" value="controle">
+                                    <label for="q6-e">Un outil de contrôle : compter et peser m'apporte une
+                                        sécurité</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q6-f" name="q6" value="passe-temps">
+                                    <label for="q6-f">Un passe-temps : je grignote pour meubler l'ennui ou le
+                                        vide</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="7" style="display: none;">
+                            <h3 class="question-title">Quel bénéfice discret pourriez-vous perdre en retrouvant votre
+                                poids
+                                minceur équilibré ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q7-a" name="q7" value="protection">
+                                    <label for="q7-a">Un sentiment protecteur, un « camouflage » rassurant</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q7-b" name="q7" value="convivialite">
+                                    <label for="q7-b">Les instants de convivialité bâtis autour de la nourriture</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q7-c" name="q7" value="pretexte">
+                                    <label for="q7-c">Un prétexte pour éviter certaines activités ou sorties</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q7-d" name="q7" value="aucun">
+                                    <label for="q7-d">Aucun : je n'y vois que des bénéfices</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="8" style="display: none;">
+                            <h3 class="question-title">Qu'espérez-vous avant tout en retrouvant votre poids d'équilibre
+                                ?
+                            </h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q8-a" name="q8" value="confiance">
+                                    <label for="q8-a">Renforcer ma confiance intérieure</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q8-b" name="q8" value="silhouette">
+                                    <label for="q8-b">Afficher une silhouette plus harmonieuse</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q8-c" name="q8" value="aisance">
+                                    <label for="q8-c">Retrouver une aisance de mouvement au quotidien</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q8-d" name="q8" value="sante">
+                                    <label for="q8-d">Prolonger ma longévité et ma santé globale</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q8-e" name="q8" value="evenement">
+                                    <label for="q8-e">Être prêt·e pour un événement précis (mariage, voyage,
+                                        opération…)</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q8-f" name="q8" value="qualite">
+                                    <label for="q8-f">Élever globalement ma qualité de vie</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="9" style="display: none;">
+                            <h3 class="question-title">Comment cet excès de poids perturbe-t-il aujourd'hui votre
+                                quotidien
+                                ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q9-a" name="q9" value="inconfort">
+                                    <label for="q9-a">Inconfort physique permanent</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q9-b" name="q9" value="social">
+                                    <label for="q9-b">Réticence à participer aux sorties sociales</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q9-c" name="q9" value="deplacements">
+                                    <label for="q9-c">Crainte ou fatigue lors des déplacements</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q9-d" name="q9" value="travail">
+                                    <label for="q9-d">Manque d'efficacité ou de concentration au travail</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q9-e" name="q9" value="estime">
+                                    <label for="q9-e">Estime de soi fragilisée</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q9-f" name="q9" value="indefini">
+                                    <label for="q9-f">Je ne saurais le dire</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="10" style="display: none;">
+                            <h3 class="question-title">Quelles réactions physiques ressentez-vous le plus ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q10-a" name="q10" value="essoufflement">
+                                    <label for="q10-a">Essoufflement rapide</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q10-b" name="q10" value="transpiration">
+                                    <label for="q10-b">Transpiration plus abondante que d'habitude</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q10-c" name="q10" value="ronflements">
+                                    <label for="q10-c">Ronflements fréquents</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q10-d" name="q10" value="sommeil">
+                                    <label for="q10-d">Sommeil perturbé</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q10-e" name="q10" value="cutanes">
+                                    <label for="q10-e">Problèmes cutanés</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q10-f" name="q10" value="fatigue">
+                                    <label for="q10-f">Fatigue persistante</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q10-g" name="q10" value="douleurs">
+                                    <label for="q10-g">Douleurs du dos ou des articulations</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="11" style="display: none;">
+                            <h3 class="question-title">Depuis combien de temps visez-vous une gestion de poids (perte de
+                                poids) ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q11-a" name="q11" value="moins6">
+                                    <label for="q11-a">Moins de six mois</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q11-b" name="q11" value="6a12">
+                                    <label for="q11-b">De six à douze mois</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q11-c" name="q11" value="1a5">
+                                    <label for="q11-c">Un à cinq ans</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q11-d" name="q11" value="plus5">
+                                    <label for="q11-d">Plus de cinq ans</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="12" style="display: none;">
+                            <h3 class="question-title">Sur une échelle de 1 à 4, où situez-vous votre « disponibilité
+                                intérieure » pour entamer un travail hypnotique ?</h3>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q12-a" name="q12" value="niveau1">
+                                    <label for="q12-a">1 - Je ne suis pas prêt·e ; d'autres priorités réclament mon
+                                        attention.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q12-b" name="q12" value="niveau2">
+                                    <label for="q12-b">2 - L'envie est là, mais je doute encore de ma capacité à
+                                        changer.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q12-c" name="q12" value="niveau3">
+                                    <label for="q12-c">3 - Je me sens motivé·e et curieux·se ; j'accueille volontiers
+                                        l'expérience.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q12-d" name="q12" value="niveau4">
+                                    <label for="q12-d">4 - Je suis pleinement décidé·e ; il ne me manque que la méthode
+                                        adéquate.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="13" style="display: none;">
+                            <h3 class="question-title">Scénario : pic de stress au travail</h3>
+                            <p class="scenario-description">Il est 16 h. Vous sortez d'une réunion tendue, le cœur
+                                encore
+                                battant. Dans le couloir, un distributeur de snacks vous attend. Que faites-vous, sans
+                                trop
+                                y penser ?</p>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q13-a" name="q13" value="douceur">
+                                    <label for="q13-a">Je compose aussitôt un code : « Besoin d'une douceur pour me
+                                        consoler. »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q13-b" name="q13" value="light">
+                                    <label for="q13-b">J'hésite, puis je choisis une boisson ou un encas prétendument «
+                                        light ».</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q13-c" name="q13" value="relaxation">
+                                    <label for="q13-c">Je prends un verre d'eau, je respire à fond ou je marche cinq
+                                        minutes
+                                        pour relâcher la pression.</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q13-d" name="q13" value="serein">
+                                    <label for="q13-d">Aucune envie particulière ; je retourne sereinement à mon
+                                        poste.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="14" style="display: none;">
+                            <h3 class="question-title">Scénario : restaurant entre ami·es</h3>
+                            <p class="scenario-description">On vous propose de partager un dessert (« on prendra juste
+                                des
+                                cuillères »). Votre réaction intérieure dominante ?</p>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q14-a" name="q14" value="joie">
+                                    <label for="q14-a">Joie : « Super, on profite ! »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q14-b" name="q14" value="crainte">
+                                    <label for="q14-b">Crainte : « Je vais perdre le contrôle. »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q14-c" name="q14" value="indifference">
+                                    <label for="q14-c">Indifférence : « Je suivrai le groupe si ça vient. »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q14-d" name="q14" value="conflit">
+                                    <label for="q14-d">Conflit interne : envie de dire non, mais peur de paraître
+                                        rabat-joie.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container" data-question-id="15" style="display: none;">
+                            <h3 class="question-title">Scénario : face au miroir, le matin</h3>
+                            <p class="scenario-description">Vous enfilez un pantalon, il serre légèrement. Votre regard
+                                croise votre reflet. Quelle pensée instinctive surgit à ce moment précis ?</p>
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q15-a" name="q15" value="echec">
+                                    <label for="q15-a">« Je suis nul·le… J'ai encore échoué. »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q15-b" name="q15" value="reprise">
+                                    <label for="q15-b">« Il faut absolument que je reprenne ma diète dès aujourd'hui.
+                                        »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q15-c" name="q15" value="acceptation">
+                                    <label for="q15-c">« Mon corps change parfois, et c'est normal. Je reste en chemin.
+                                        »</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q15-d" name="q15" value="indifference">
+                                    <label for="q15-d">Rien de clair ne me vient ; je poursuis ma journée sans y
+                                        penser.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini-test Cortisol -->
+                        <div class="question-container cortisol-test" data-question-id="16" style="display: none;">
+                            <h3 class="question-title cortisol-title">Mini-test « Cortisol » – repérer l'hyper-stress
+                            </h3>
+                            <p class="cortisol-intro">Quelques questions pour évaluer votre niveau de stress et l'impact
+                                potentiel du cortisol sur votre santé.</p>
+
+                            <div class="cortisol-question">
+                                <h4>Au réveil, votre premier état intérieur est plutôt…</h4>
+                                <div class="options">
+                                    <div class="option">
+                                        <input type="radio" id="q16-a" name="q16" value="calme">
+                                        <label for="q16-a">Calme et disposé·e à commencer la journée</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q16-b" name="q16" value="tension">
+                                        <label for="q16-b">Déjà sous tension, pensées qui courent dans tous les
+                                            sens</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q16-c" name="q16" value="fatigue">
+                                        <label for="q16-c">Une fatigue lourde, difficile de sortir du lit</label>
+                                    </div>
+                                </div>
+                                <p class="cortisol-insight">→ L'état matinal traduit le pic naturel de cortisol ;
+                                    l'hypnose peut aider à rétablir un réveil plus serein.</p>
+                            </div>
+                        </div>
+
+                        <div class="question-container cortisol-test" data-question-id="17" style="display: none;">
+                            <div class="cortisol-question">
+                                <h4>En fin de matinée, comment évolue votre énergie ?</h4>
+                                <div class="options">
+                                    <div class="option">
+                                        <input type="radio" id="q17-a" name="q17" value="stable">
+                                        <label for="q17-a">Elle reste stable</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q17-b" name="q17" value="irritabilite">
+                                        <label for="q17-b">Elle monte, mais accompagnée d'irritabilité</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q17-c" name="q17" value="effondrement">
+                                        <label for="q17-c">Elle s'effondre ; besoin de café ou de sucre</label>
+                                    </div>
+                                </div>
+                                <p class="cortisol-insight">→ Les variations d'énergie reflètent la courbe interne du
+                                    cortisol, souvent gérée inconsciemment.</p>
+                            </div>
+                        </div>
+
+                        <div class="question-container cortisol-test" data-question-id="18" style="display: none;">
+                            <div class="cortisol-question">
+                                <h4>Face à un contretemps soudain, votre réaction réflexe est…</h4>
+                                <div class="options">
+                                    <div class="option">
+                                        <input type="radio" id="q18-a" name="q18" value="recul">
+                                        <label for="q18-a">Je prends du recul, je respire</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q18-b" name="q18" value="agacement">
+                                        <label for="q18-b">Je m'agace, parfois je hausse la voix</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q18-c" name="q18" value="submerge">
+                                        <label for="q18-c">Je me sens submergé·e, je fige ou je renonce</label>
+                                    </div>
+                                </div>
+                                <p class="cortisol-insight">→ Le réflexe de stress révèle le « programme d'alarme »
+                                    inscrit dans l'inconscient ; l'hypnose peut en installer un plus souple.</p>
+                            </div>
+                        </div>
+
+                        <div class="question-container cortisol-test" data-question-id="19" style="display: none;">
+                            <div class="cortisol-question">
+                                <h4>Votre sommeil se caractérise plutôt par…</h4>
+                                <div class="options">
+                                    <div class="option">
+                                        <input type="radio" id="q19-a" name="q19" value="paisible">
+                                        <label for="q19-a">Endormissement rapide et nuit paisible</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q19-b" name="q19" value="ruminations">
+                                        <label for="q19-b">Difficulté à lâcher prise, ruminations</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q19-c" name="q19" value="reveils">
+                                        <label for="q19-c">Réveils nocturnes fréquents</label>
+                                    </div>
+                                </div>
+                                <p class="cortisol-insight">→ Un cortisol nocturne mal régulé perturbe le sommeil ;
+                                    l'hypnose soutient le retour à une courbe hormonale apaisée.</p>
+                            </div>
+                        </div>
+
+                        <div class="question-container cortisol-test" data-question-id="20" style="display: none;">
+                            <div class="cortisol-question">
+                                <h4>Corps et esprit après la journée ?</h4>
+                                <div class="options">
+                                    <div class="option">
+                                        <input type="radio" id="q20-a" name="q20" value="detendus">
+                                        <label for="q20-a">Détendus, prêts pour des loisirs</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q20-b" name="q20" value="raideur">
+                                        <label for="q20-b">Raideur musculaire, mâchoires serrées</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="q20-c" name="q20" value="epuisement">
+                                        <label for="q20-c">Épuisement, sans envie de rien</label>
+                                    </div>
+                                </div>
+                                <p class="cortisol-insight">→ Les tensions corporelles sont le langage de l'inconscient
+                                    ; en transe, on peut relâcher ces messages et rééduquer la réponse au stress.</p>
+                            </div>
+                        </div>
+
+                        <div class="result-container" style="display: none;">
+                            <h2>Merci pour vos réponses !</h2>
+                            <p>Basé sur votre profil, voici notre recommandation personnalisée:</p>
+
+                            <!-- Rapport détaillé -->
+                            <div class="report-container">
+                                <!-- A. Bandeau de bienvenue -->
+                                <div class="report-header">
+                                    <img src="/static/images/hypno.png" alt="Photo du client" class="client-photo">
+                                    <div class="client-info">
+                                        <h2 class="client-name"><span id="client-firstname">Prénom</span> <span
+                                                id="client-lastname">Nom</span></h2>
+                                        <p class="client-motto">En route vers la Métamorphose</p>
+                                    </div>
+                                </div>
+
+                                <!-- B. Indicateurs clés -->
+                                <div class="indicators-grid">
+                                    <div class="indicator-card" id="imc-card">
+                                        <h3 class="indicator-title">IMC</h3>
+                                        <div class="indicator-value" id="imc-value">--</div>
+                                        <span class="indicator-unit">kg/m²</span>
+                                    </div>
+                                    <div class="indicator-card" id="age-metabolic-card">
+                                        <h3 class="indicator-title">Âge métabolique</h3>
+                                        <div class="indicator-value" id="age-metabolic-value">--</div>
+                                        <span class="indicator-unit">ans</span>
+                                    </div>
+                                    <div class="indicator-card" id="engagement-card">
+                                        <h3 class="indicator-title">Taux d'engagement</h3>
+                                        <div class="indicator-value" id="engagement-value">--</div>
+                                        <span class="indicator-unit">%</span>
+                                    </div>
+                                    <div class="indicator-card" id="motivation-card">
+                                        <h3 class="indicator-title">Motivation intérieure</h3>
+                                        <div class="indicator-value" id="motivation-value">--</div>
+                                        <span class="indicator-unit">/100</span>
+                                    </div>
+                                    <div class="indicator-card" id="score-global-card">
+                                        <h3 class="indicator-title">Score Métamorphose</h3>
+                                        <div class="indicator-value" id="score-global-value">--</div>
+                                        <span class="indicator-unit">/100</span>
+                                    </div>
+                                    <div class="indicator-card" id="cortisol-card">
+                                        <h3 class="indicator-title">Équilibre Cortisol</h3>
+                                        <div class="indicator-value" id="cortisol-value">--</div>
+                                        <span class="indicator-unit">%</span>
+                                    </div>
+                                </div>
+
+                                <!-- D. Courbe du cortisol -->
+                                <div class="cortisol-chart-section">
+                                    <h3 class="section-title">Votre courbe de cortisol</h3>
+                                    <p class="section-description">Cette courbe montre l'évolution estimée de votre
+                                        cortisol au cours de la journée, comparée à une courbe idéale.</p>
+                                    <div class="chart-container">
+                                        <canvas id="cortisolChart"></canvas>
+                                    </div>
+                                    <div class="chart-legend">
+                                        <div class="legend-item">
+                                            <span class="legend-color ideal"></span>
+                                            <span class="legend-text">Courbe idéale</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color actual"></span>
+                                            <span class="legend-text">Votre courbe estimée</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart-insights">
+                                        <p id="cortisol-insight">Survolez la courbe pour obtenir des conseils
+                                            spécifiques.</p>
+                                    </div>
+                                </div>
+
+                                <!-- E. Profil subconscient -->
+                                <div class="profile-section">
+                                    <h3 class="profile-title">Votre Profil subconscient</h3>
+                                    <ul class="profile-points">
+                                        <li class="profile-point">Vous possédez une forte capacité d'autosuggestion qui
+                                            peut être canalisée positivement par l'hypnose.</li>
+                                        <li class="profile-point">Votre relation émotionnelle à la nourriture influence
+                                            significativement vos comportements alimentaires.</li>
+                                        <li class="profile-point">Le stress et son impact hormonal (cortisol) représente
+                                            un défi majeur dans votre équilibre physiologique.</li>
+                                    </ul>
+                                </div>
+
+                                <!-- F. Apport du Dr Idrissi -->
+                                <div class="timeline-section">
+                                    <h3 class="timeline-title">Notre approche pour vous</h3>
+                                    <div class="timeline">
+                                        <div class="timeline-step">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </div>
+                                            <div class="timeline-label">Évaluation</div>
+                                        </div>
+                                        <div class="timeline-step">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-brain"></i>
+                                            </div>
+                                            <div class="timeline-label">Séance d'attaque</div>
+                                        </div>
+                                        <div class="timeline-step">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                            <div class="timeline-label">Cercle Privé</div>
+                                        </div>
+                                        <div class="timeline-step">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-chalkboard-teacher"></i>
+                                            </div>
+                                            <div class="timeline-label">Masterclass</div>
+                                        </div>
+                                        <div class="timeline-step">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-chart-line"></i>
+                                            </div>
+                                            <div class="timeline-label">Suivi mensuel</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- G. Choix des formules -->
+                                <div class="packages-section">
+                                    <h3 class="packages-title">Nos formules adaptées à votre profil</h3>
+                                    <div class="packages-grid">
+                                        <div class="package-card">
+                                            <h4 class="package-name">Séance diagnostic approfondie</h4>
+                                            <div class="package-price">75€</div>
+                                            <p class="package-description">Une évaluation détaillée de votre profil pour
+                                                identifier les leviers de changement.</p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
+                                        <div class="package-card">
+                                            <h4 class="package-name">Séance d'attaque</h4>
+                                            <div class="package-price">150€</div>
+                                            <p class="package-description">Une séance intensive pour amorcer votre
+                                                transformation et ancrer de nouveaux réflexes.</p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
+                                        <div class="package-card">
+                                            <h4 class="package-name">Programme Métamorphose</h4>
+                                            <div class="package-price">497€</div>
+                                            <p class="package-description">3 mois d'accompagnement complet avec séances
+                                                d'hypnose et suivi personnalisé.</p>
+                                            <a href="#" class="btn btn-primary">S'inscrire</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- H. CTA final -->
+                                <div class="cta-section">
+                                    <a href="#" class="cta-button">Je démarre ma transformation</a>
+                                </div>
+                            </div>
+
+                            <a href="{{ url_for('diagnostic') }}" class="btn" style="margin-top: 2rem;">Retour au
+                                diagnostic</a>
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <button type="button" id="prev-button" class="btn" style="display: none;">Précédent</button>
+                            <button type="button" id="next-button" class="btn btn-primary">Suivant</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/questionnaire.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
